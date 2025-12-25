@@ -21,7 +21,7 @@ class HiRoughCfg( LeggedRobotCfg ):
             'r_ankle_roll_joint': 0,       # 踝部滚动
             
             # 躯干关节
-            # 'waist_yaw_joint': 0,          # 躯干偏航
+            'waist_yaw_joint': 0,          # 躯干偏航
         }
     
     class env(LeggedRobotCfg.env):
@@ -85,9 +85,22 @@ class HiRoughCfg( LeggedRobotCfg ):
         self_collisions = 0 # 1 to disable, 0 to enable...bitwise filter
         flip_visual_attachments = False
   
+  ## 对于HI机器人，基础高度目标值同样设置为0.78。查看HI URDF文件：
+    # 基础链接称为"base_link"，惯性原点位于xyz="0 0 -0.0394294"
+
+    # 从base_link到脚部的腿部运动学链：
+    # base_link → l_hip_pitch_link (z偏移: -0.04)
+    # l_hip_pitch_link → l_hip_roll_link (z偏移: 0, y偏移: 0.07)
+    # l_hip_roll_link → l_hip_thigh_link (z偏移: -0.095)
+    # l_hip_thigh_link → l_hip_calf_link (z偏移: -0.097)
+    # l_hip_calf_link → l_ankle_pitch_link (z偏移: -0.19945)
+    # l_ankle_pitch_link → l_ankle_roll_link (z偏移: 0)
+    # l_ankle_roll_link有代表脚部的碰撞几何体。
+
+    # 从base_link到脚部接触点的总腿部长度： -0.0394294 (base_link惯性偏移) - 0.04 - 0.095 - 0.097 - 0.19945 = -0.4708794
     class rewards( LeggedRobotCfg.rewards ):
         soft_dof_pos_limit = 0.9
-        base_height_target = 0.78
+        base_height_target = 0.42
         
         class scales( LeggedRobotCfg.rewards.scales ):
             tracking_lin_vel = 1.0
