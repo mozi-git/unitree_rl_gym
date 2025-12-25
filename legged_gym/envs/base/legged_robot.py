@@ -472,10 +472,13 @@ class LeggedRobot(BaseTask):
             found = False
             for dof_name in self.cfg.control.stiffness.keys():
                 if dof_name in name:
+                    print(f"P gain of joint {name} were defined, setting them to {self.cfg.control.stiffness[dof_name]}")
+                    print(f"D gain of joint {name} were defined, setting them to {self.cfg.control.damping[dof_name]}")
                     self.p_gains[i] = self.cfg.control.stiffness[dof_name]
                     self.d_gains[i] = self.cfg.control.damping[dof_name]
                     found = True
             if not found:
+                print(f"Joint {name} is not in the list of joints with PD gains, setting them to zero")
                 self.p_gains[i] = 0.
                 self.d_gains[i] = 0.
                 if self.cfg.control.control_type in ["P", "V"]:
@@ -554,6 +557,7 @@ class LeggedRobot(BaseTask):
         # save body names from the asset
         body_names = self.gym.get_asset_rigid_body_names(robot_asset)
         self.dof_names = self.gym.get_asset_dof_names(robot_asset)
+        print(f"dof_names: {self.dof_names}")
         self.num_bodies = len(body_names)
         self.num_dofs = len(self.dof_names)
         feet_names = [s for s in body_names if self.cfg.asset.foot_name in s]

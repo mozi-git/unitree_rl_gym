@@ -1,0 +1,128 @@
+from legged_gym.envs.base.legged_robot_config import LeggedRobotCfg, LeggedRobotCfgPPO
+
+class HiRoughCfg( LeggedRobotCfg ):
+    class init_state( LeggedRobotCfg.init_state ):
+        pos = [0.0, 0.0, 1.0] # x,y,z [m]
+        default_joint_angles = { # = target angles [rad] when action = 0.0
+            # 左腿关节 (6个自由度)
+            'l_hip_pitch_joint': -0.1,     # 髋部俯仰
+            'l_hip_roll_joint': 0,         # 髋部滚动
+            'l_hip_thigh_joint': 0,        # 髋部偏航
+            'l_hip_calf_joint': 0.3,       # 膝盖
+            'l_ankle_pitch_joint': -0.2,   # 踝部俯仰
+            'l_ankle_roll_joint': 0,       # 踝部滚动
+            
+            # 右腿关节 (6个自由度)
+            'r_hip_pitch_joint': -0.1,     # 髋部俯仰
+            'r_hip_roll_joint': 0,         # 髋部滚动
+            'r_hip_thigh_joint': 0,        # 髋部偏航
+            'r_hip_calf_joint': 0.3,       # 膝盖
+            'r_ankle_pitch_joint': -0.2,   # 踝部俯仰
+            'r_ankle_roll_joint': 0,       # 踝部滚动
+            
+            # 躯干关节
+            # 'waist_yaw_joint': 0,          # 躯干偏航
+        }
+    
+    class env(LeggedRobotCfg.env):
+        # 3(角速度) + 3(重力) + 3(命令) + 12(关节位置) + 12(关节速度) + 12(动作) + 2(相位) = 50
+        num_observations = 47
+        num_privileged_obs = 50
+        num_actions = 12
+
+    class domain_rand(LeggedRobotCfg.domain_rand):
+        randomize_friction = True
+        friction_range = [0.1, 1.25]
+        randomize_base_mass = True
+        added_mass_range = [-1., 3.]
+        push_robots = True
+        push_interval_s = 5
+        max_push_vel_xy = 1.5
+
+    class control( LeggedRobotCfg.control ):
+        # PD Drive parameters:
+        control_type = 'P'
+        # PD Drive parameters:
+        stiffness = {
+            'l_hip_pitch': 25,   # 左髋部俯仰
+            'l_hip_roll': 25,    # 左髋部滚动
+            'l_hip_thigh': 25,   # 左髋部偏航
+            'l_hip_calf': 30,    # 左膝盖
+            'l_ankle_pitch': 8,  # 左踝部俯仰
+            'l_ankle_roll': 8,   # 左踝部滚动
+            'r_hip_pitch': 25,   # 右髋部俯仰
+            'r_hip_roll': 25,    # 右髋部滚动
+            'r_hip_thigh': 25,   # 右髋部偏航
+            'r_hip_calf': 30,    # 右膝盖
+            'r_ankle_pitch': 8,  # 右踝部俯仰
+            'r_ankle_roll': 8,   # 右踝部滚动
+        }
+        damping = {
+            'l_hip_pitch': 2.5,  # 左髋部俯仰
+            'l_hip_roll': 2.5,   # 左髋部滚动
+            'l_hip_thigh': 2.5,  # 左髋部偏航
+            'l_hip_calf': 3.0,   # 左膝盖
+            'l_ankle_pitch': 1.5, # 左踝部俯仰
+            'l_ankle_roll': 1.5, # 左踝部滚动
+            'r_hip_pitch': 2.5,  # 右髋部俯仰
+            'r_hip_roll': 2.5,   # 右髋部滚动
+            'r_hip_thigh': 2.5,  # 右髋部偏航
+            'r_hip_calf': 3.0,   # 右膝盖
+            'r_ankle_pitch': 1.5, # 右踝部俯仰
+            'r_ankle_roll': 1.5, # 右踝部滚动
+        }
+        # action scale: target angle = actionScale * action + defaultAngle
+        action_scale = 0.25
+        # decimation: Number of control action updates @ sim DT per policy DT
+        decimation = 4
+
+    class asset( LeggedRobotCfg.asset ):
+        file = '{LEGGED_GYM_ROOT_DIR}/resources/robots/hi/urdf/hi_12dof.urdf'
+        name = "hi"
+        foot_name = "ankle_roll"  # 使用踝部滚动关节作为足部
+        penalize_contacts_on = ["thigh", "calf"]
+        terminate_after_contacts_on = ["pelvis"]
+        self_collisions = 0 # 1 to disable, 0 to enable...bitwise filter
+        flip_visual_attachments = False
+  
+    class rewards( LeggedRobotCfg.rewards ):
+        soft_dof_pos_limit = 0.9
+        base_height_target = 0.78
+        
+        class scales( LeggedRobotCfg.rewards.scales ):
+            tracking_lin_vel = 1.0
+            tracking_ang_vel = 0.5
+            lin_vel_z = -2.0
+            ang_vel_xy = -0.05
+            orientation = -1.0
+            base_height = -10.0
+            dof_acc = -2.5e-7
+            dof_vel = -1e-3
+            feet_air_time = 0.0
+            collision = 0.0
+            action_rate = -0.01
+            dof_pos_limits = -5.0
+            alive = 0.15
+            hip_pos = -1.0
+            contact_no_vel = -0.2
+            feet_swing_height = -20.0
+            contact = 0.18
+
+class HiRoughCfgPPO( LeggedRobotCfgPPO ):
+    class policy:
+        init_noise_std = 0.8
+        actor_hidden_dims = [32]
+        critic_hidden_dims = [32]
+        activation = 'elu' # can be elu, relu, selu, crelu, lrelu, tanh, sigmoid
+        # only for 'ActorCriticRecurrent':
+        rnn_type = 'lstm'
+        rnn_hidden_size = 64
+        rnn_num_layers = 1
+        
+    class algorithm( LeggedRobotCfgPPO.algorithm ):
+        entropy_coef = 0.01
+    class runner( LeggedRobotCfgPPO.runner ):
+        policy_class_name = "ActorCriticRecurrent"
+        max_iterations = 10000
+        run_name = ''
+        experiment_name = 'hi'
