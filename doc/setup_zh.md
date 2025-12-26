@@ -35,13 +35,13 @@ source ~/.bashrc
 使用以下命令创建虚拟环境：
 
 ```bash
-conda create -n unitree-rl python=3.8
+conda create -n unitree python=3.8
 ```
 
 ### 1.3 激活虚拟环境
 
 ```bash
-conda activate unitree-rl
+conda activate unitree
 ```
 
 ---
@@ -81,7 +81,7 @@ pip install -e .
 cd examples
 python 1080_balls_of_solitude.py
 ```
-
+export LD_LIBRARY_PATH="/home/zhumeng/miniconda3/envs/unitree/lib/":$LD_LIBRARY_PATH
 如有问题，可参考 `isaacgym/docs/index.html` 中的官方文档。
 
 ### 2.3 安装 rsl_rl

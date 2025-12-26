@@ -2,7 +2,7 @@ from legged_gym.envs.base.legged_robot_config import LeggedRobotCfg, LeggedRobot
 
 class HiRoughCfg( LeggedRobotCfg ):
     class init_state( LeggedRobotCfg.init_state ):
-        pos = [0.0, 0.0, 1.0] # x,y,z [m]
+        pos = [0.0, 0.0, 0.47] # x,y,z [m]
         default_joint_angles = { # = target angles [rad] when action = 0.0
             # 左腿关节 (6个自由度)
             'l_hip_pitch_joint': -0.1,     # 髋部俯仰
@@ -98,9 +98,56 @@ class HiRoughCfg( LeggedRobotCfg ):
     # l_ankle_roll_link有代表脚部的碰撞几何体。
 
     # 从base_link到脚部接触点的总腿部长度： -0.0394294 (base_link惯性偏移) - 0.04 - 0.095 - 0.097 - 0.19945 = -0.4708794
+
+################### g1 ########################################
+#     Value function loss: 0.0007
+#                     Surrogate loss: -0.0088
+#              Mean action noise std: 0.80
+#                        Mean reward: 0.02
+#                Mean episode length: 15.08
+#       Mean episode rew_action_rate: -0.0018
+#             Mean episode rew_alive: 0.0020
+#        Mean episode rew_ang_vel_xy: -0.0025
+#       Mean episode rew_base_height: -0.0002
+#           Mean episode rew_contact: 0.0023
+#    Mean episode rew_contact_no_vel: -0.0010
+#           Mean episode rew_dof_acc: -0.0031
+#    Mean episode rew_dof_pos_limits: -0.0001
+#           Mean episode rew_dof_vel: -0.0023
+# Mean episode rew_feet_swing_height: -0.0003
+#           Mean episode rew_hip_pos: -0.0006
+#         Mean episode rew_lin_vel_z: -0.0013
+#       Mean episode rew_orientation: -0.0006
+#           Mean episode rew_torques: -0.0003
+#  Mean episode rew_tracking_ang_vel: 0.0014
+#  Mean episode rew_tracking_lin_vel: 0.0024
+    
+########### hi ########################################
+# Value function loss: 2.5478
+#                     Surrogate loss: -0.0042
+#              Mean action noise std: 0.80
+#                        Mean reward: -5.02
+#                Mean episode length: 23.10
+#       Mean episode rew_action_rate: -0.0018
+#             Mean episode rew_alive: 0.0020
+#        Mean episode rew_ang_vel_xy: -0.0026
+#       Mean episode rew_base_height: -0.0104
+#           Mean episode rew_contact: 0.0020
+#    Mean episode rew_contact_no_vel: -0.0014
+#           Mean episode rew_dof_acc: -0.0014
+#    Mean episode rew_dof_pos_limits: -0.0005
+#           Mean episode rew_dof_vel: -0.0037
+# Mean episode rew_feet_swing_height: -0.0687
+#           Mean episode rew_hip_pos: -0.0002
+#         Mean episode rew_lin_vel_z: -0.0638
+#       Mean episode rew_orientation: -0.0008
+#           Mean episode rew_torques: -0.0001
+#  Mean episode rew_tracking_ang_vel: 0.0018
+#  Mean episode rew_tracking_lin_vel: 0.0025
     class rewards( LeggedRobotCfg.rewards ):
+        only_positive_rewards = True
         soft_dof_pos_limit = 0.9
-        base_height_target = 0.42
+        base_height_target = 0.420  # 目标基础高度设置为0.42米
         
         class scales( LeggedRobotCfg.rewards.scales ):
             tracking_lin_vel = 1.0
