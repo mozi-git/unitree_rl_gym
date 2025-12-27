@@ -1,5 +1,9 @@
 <mujoco model="hi_12dof">
   <compiler angle="radian" meshdir="meshes/"/>
+  <statistic meansize="0.144785" extent="1.23314" center="0.025392 2.0634e-05 -0.245975"/>
+  <default>
+    <joint damping="0.001" armature="0.01" frictionloss="0.08"/>
+  </default>
 
   <asset>
     <mesh name="base_link" file="base_link.STL"/>
