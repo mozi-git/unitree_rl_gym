@@ -43,33 +43,35 @@ class HiRoughCfg( LeggedRobotCfg ):
         # PD Drive parameters:
         control_type = 'P'
         # PD Drive parameters:
+        # kps: [40, 35, 30, 50, 12, 10, 40, 35, 30, 50, 12, 10]
+        # kds: [6.0, 5.0, 4.0, 8.0, 2.5, 2.0, 6.0, 5.0, 4.0, 8.0, 2.5, 2.0]
         stiffness = {
-            'l_hip_pitch': 25,   # 左髋部俯仰
-            'l_hip_roll': 25,    # 左髋部滚动
-            'l_hip_thigh': 25,   # 左髋部偏航
-            'l_hip_calf': 30,    # 左膝盖
-            'l_ankle_pitch': 8,  # 左踝部俯仰
-            'l_ankle_roll': 8,   # 左踝部滚动
-            'r_hip_pitch': 25,   # 右髋部俯仰
-            'r_hip_roll': 25,    # 右髋部滚动
-            'r_hip_thigh': 25,   # 右髋部偏航
-            'r_hip_calf': 30,    # 右膝盖
-            'r_ankle_pitch': 8,  # 右踝部俯仰
-            'r_ankle_roll': 8,   # 右踝部滚动
+            'l_hip_pitch': 40,   # 左髋部俯仰
+            'l_hip_roll': 35,    # 左髋部滚动
+            'l_hip_thigh': 30,   # 左髋部偏航
+            'l_hip_calf': 50,    # 左膝盖
+            'l_ankle_pitch': 12,  # 左踝部俯仰
+            'l_ankle_roll': 10,   # 左踝部滚动
+            'r_hip_pitch': 40,   # 右髋部俯仰
+            'r_hip_roll': 35,    # 右髋部滚动
+            'r_hip_thigh': 30,   # 右髋部偏航
+            'r_hip_calf': 50,    # 右膝盖
+            'r_ankle_pitch': 12,  # 右踝部俯仰
+            'r_ankle_roll': 10,   # 右踝部滚动
         }
         damping = {
-            'l_hip_pitch': 2.5,  # 左髋部俯仰
-            'l_hip_roll': 2.5,   # 左髋部滚动
-            'l_hip_thigh': 2.5,  # 左髋部偏航
-            'l_hip_calf': 3.0,   # 左膝盖
-            'l_ankle_pitch': 1.5, # 左踝部俯仰
-            'l_ankle_roll': 1.5, # 左踝部滚动
-            'r_hip_pitch': 2.5,  # 右髋部俯仰
-            'r_hip_roll': 2.5,   # 右髋部滚动
-            'r_hip_thigh': 2.5,  # 右髋部偏航
-            'r_hip_calf': 3.0,   # 右膝盖
-            'r_ankle_pitch': 1.5, # 右踝部俯仰
-            'r_ankle_roll': 1.5, # 右踝部滚动
+            'l_hip_pitch': 6.0,  # 左髋部俯仰
+            'l_hip_roll': 5.0,   # 左髋部滚动
+            'l_hip_thigh': 4.0,  # 左髋部偏航
+            'l_hip_calf': 8.0,   # 左膝盖
+            'l_ankle_pitch': 2.5, # 左踝部俯仰
+            'l_ankle_roll': 2.0, # 左踝部滚动
+            'r_hip_pitch': 6.0,  # 右髋部俯仰
+            'r_hip_roll': 5.0,   # 右髋部滚动
+            'r_hip_thigh': 4.0,  # 右髋部偏航
+            'r_hip_calf': 8.0,   # 右膝盖
+            'r_ankle_pitch': 2.5, # 右踝部俯仰
+            'r_ankle_roll': 2.0, # 右踝部滚动
         }
         # action scale: target angle = actionScale * action + defaultAngle
         action_scale = 0.25
@@ -183,6 +185,6 @@ class HiRoughCfgPPO( LeggedRobotCfgPPO ):
         entropy_coef = 0.01
     class runner( LeggedRobotCfgPPO.runner ):
         policy_class_name = "ActorCriticRecurrent"
-        max_iterations = 10000
+        max_iterations = 20000
         run_name = ''
         experiment_name = 'hi'
