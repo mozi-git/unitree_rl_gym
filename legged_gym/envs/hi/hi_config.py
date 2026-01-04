@@ -45,35 +45,70 @@ class HiRoughCfg( LeggedRobotCfg ):
         # PD Drive parameters:
         # kps: [40, 35, 30, 50, 12, 10, 40, 35, 30, 50, 12, 10]
         # kds: [6.0, 5.0, 4.0, 8.0, 2.5, 2.0, 6.0, 5.0, 4.0, 8.0, 2.5, 2.0]
+
+        ################ original ################
+        # kps: [25, 25, 25, 30, 8, 8, 25, 25, 25, 30, 8, 8]
+        # kds: [2.5, 2.5, 2.5, 3.0, 1.5, 1.5, 2.5, 2.5, 2.5, 3.0, 1.5, 1.5]
         stiffness = {
-            'l_hip_pitch': 40,
-            'l_hip_roll': 40,
-            'l_hip_thigh': 30,
-            'l_hip_calf': 35,
-            'l_ankle_pitch': 20,
-            'l_ankle_roll': 15,
-            'r_hip_pitch': 40,
-            'r_hip_roll': 40,
-            'r_hip_thigh': 30,
-            'r_hip_calf': 35,
-            'r_ankle_pitch': 20,
-            'r_ankle_roll': 15,
+            'l_hip_pitch': 25,   # 左髋部俯仰
+            'l_hip_roll': 25,    # 左髋部滚动
+            'l_hip_thigh': 25,   # 左髋部偏航
+            'l_hip_calf': 30,    # 左膝盖
+            'l_ankle_pitch': 8,  # 左踝部俯仰
+            'l_ankle_roll': 8,   # 左踝部滚动
+            'r_hip_pitch': 25,   # 右髋部俯仰
+            'r_hip_roll': 25,    # 右髋部滚动
+            'r_hip_thigh': 25,   # 右髋部偏航
+            'r_hip_calf': 30,    # 右膝盖
+            'r_ankle_pitch': 8,  # 右踝部俯仰
+            'r_ankle_roll': 8,   # 右踝部滚动
         }
 
         damping = {
-            'l_hip_pitch': 6.0,
-            'l_hip_roll': 6.0,
-            'l_hip_thigh': 5.0,
-            'l_hip_calf': 6.0,
-            'l_ankle_pitch': 4.0,
-            'l_ankle_roll': 3.5,
-            'r_hip_pitch': 6.0,
-            'r_hip_roll': 6.0,
-            'r_hip_thigh': 5.0,
-            'r_hip_calf': 6.0,
-            'r_ankle_pitch': 4.0,
-            'r_ankle_roll': 3.5,
+            'l_hip_pitch': 2.5,  # 左髋部俯仰
+            'l_hip_roll': 2.5,   # 左髋部滚动
+            'l_hip_thigh': 2.5,  # 左髋部偏航
+            'l_hip_calf': 3.0,   # 左膝盖
+            'l_ankle_pitch': 1.5, # 左踝部俯仰
+            'l_ankle_roll': 1.5, # 左踝部滚动
+            'r_hip_pitch': 2.5,  # 右髋部俯仰
+            'r_hip_roll': 2.5,   # 右髋部滚动
+            'r_hip_thigh': 2.5,  # 右髋部偏航
+            'r_hip_calf': 3.0,   # 右膝盖
+            'r_ankle_pitch': 1.5, # 右踝部俯仰
+            'r_ankle_roll': 1.5, # 右踝部滚动
         }
+        use_new = True
+        if use_new:
+            stiffness = {
+                'l_hip_pitch': 40,
+                'l_hip_roll': 40,
+                'l_hip_thigh': 30,
+                'l_hip_calf': 35,
+                'l_ankle_pitch': 20,
+                'l_ankle_roll': 15,
+                'r_hip_pitch': 40,
+                'r_hip_roll': 40,
+                'r_hip_thigh': 30,
+                'r_hip_calf': 35,
+                'r_ankle_pitch': 20,
+                'r_ankle_roll': 15,
+            }
+
+            damping = {
+                'l_hip_pitch': 6.0,
+                'l_hip_roll': 6.0,
+                'l_hip_thigh': 5.0,
+                'l_hip_calf': 6.0,
+                'l_ankle_pitch': 4.0,
+                'l_ankle_roll': 3.5,
+                'r_hip_pitch': 6.0,
+                'r_hip_roll': 6.0,
+                'r_hip_thigh': 5.0,
+                'r_hip_calf': 6.0,
+                'r_ankle_pitch': 4.0,
+                'r_ankle_roll': 3.5,
+            }
         # action scale: target angle = actionScale * action + defaultAngle
         action_scale = 0.25
         # decimation: Number of control action updates @ sim DT per policy DT
