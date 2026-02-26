@@ -9,6 +9,8 @@ from legged_gym.envs.g1.g1_config import G1RoughCfg, G1RoughCfgPPO
 from legged_gym.envs.g1.g1_env import G1Robot
 from legged_gym.envs.hi.hi_env import HiRobot
 from legged_gym.envs.hi.hi_config import HiRoughCfg, HiRoughCfgPPO
+from legged_gym.envs.gr1t1.gr1t1_env import GR1T1Robot
+from legged_gym.envs.gr1t1.gr1t1_config import GR1T1RoughCfg, GR1T1RoughCfgPPO
 from .base.legged_robot import LeggedRobot
 
 from legged_gym.utils.task_registry import task_registry
@@ -18,3 +20,4 @@ task_registry.register( "h1", H1Robot, H1RoughCfg(), H1RoughCfgPPO())
 task_registry.register( "h1_2", H1_2Robot, H1_2RoughCfg(), H1_2RoughCfgPPO())
 task_registry.register( "g1", G1Robot, G1RoughCfg(), G1RoughCfgPPO())
 task_registry.register( "hi", HiRobot, HiRoughCfg(), HiRoughCfgPPO())
+task_registry.register( "gr1t1", GR1T1Robot, GR1T1RoughCfg(), GR1T1RoughCfgPPO())

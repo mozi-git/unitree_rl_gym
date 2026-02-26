@@ -36,7 +36,7 @@
   </asset>
 
   <worldbody>
-    <body name="base_link" pos="0 0 0.45">
+    <body name="base_link" pos="0 0 0.47">
       <inertial pos="-0.00501504 -0.0239609 0.11686" quat="0.394114 0.911959 0.113941 -0.00475485" mass="10.3302" diaginertia="0.226368 0.193179 0.123846"/>
       <joint name="floating_base_joint" type="free"/>
       <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.89804 0.91765 0.92941 1" mesh="base_link"/>

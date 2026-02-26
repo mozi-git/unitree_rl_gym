@@ -74,7 +74,7 @@ if __name__ == "__main__":
     d = mujoco.MjData(m)
     m.opt.timestep = simulation_dt
     d.qpos[7:7+num_actions] = default_angles
-    
+
     # 打印关节信息用于调试
     print("=" * 60)
     print("关节信息调试")
@@ -154,6 +154,13 @@ if __name__ == "__main__":
                 dqj = d.qvel[6:]
                 quat = d.qpos[3:7]
                 omega = d.qvel[3:6]
+                print(f'\nStep {counter}: 当前关节位置 (d.qpos[7:], 共{len(d.qpos[7:])}个):')
+                for i, pos in enumerate(d.qpos[7:]):
+                    print(f"  关节 {i}: {pos:.3f} rad" )
+                print(f"Step {counter}: 关节位置 (qj): {qj}")
+                print(f"Step {counter}: 关节速度 (dqj): {dqj}")
+                print(f"Step {counter}: 四元数 (quat): {quat}")
+                print(f"Step {counter}: 角速度 (omega): {omega}")
 
                 qj = (qj - default_angles) * dof_pos_scale
                 dqj = dqj * dof_vel_scale
@@ -166,6 +173,8 @@ if __name__ == "__main__":
                 sin_phase = np.sin(2 * np.pi * phase)
                 cos_phase = np.cos(2 * np.pi * phase)
 
+                print(f"基座高度: {d.qpos[2]:.3f} 米")
+                
                 obs[:3] = omega
                 obs[3:6] = gravity_orientation
                 obs[6:9] = cmd * cmd_scale
