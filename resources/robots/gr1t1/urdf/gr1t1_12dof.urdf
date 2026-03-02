@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<robot name="gr1t2">
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="hi_25dof">
+      <mujoco>                                                                                                                                          
+        <compiler meshdir="../meshes/" balanceinertia="true" discardvisual="false" />                                                                 
+      </mujoco> 
+  <!-- [CAUTION] uncomment when convert to mujoco -->
+  <link name="world"></link>
+  <joint name="floating_base_joint" type="floating">
+    <parent link="world" />
+    <child link="base_link" />
+  </joint>
+<!-- <robot name="gr1t2"> -->
   <link name="base_link">
     <inertial>
       <origin xyz="-0.06584 -9.765E-5 -0.01434" rpy="0 0 0" />
@@ -909,7 +923,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/L_hand_base_link.STL" />
+        <mesh filename="../meshes/L_hand_base_link.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -918,7 +932,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/L_hand_base_link.STL" />
+        <mesh filename="../meshes/L_hand_base_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -931,7 +945,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/L_thumb_proximal_yaw_link.STL" />
+        <mesh filename="../meshes/L_thumb_proximal_yaw_link.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -940,7 +954,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/L_thumb_proximal_yaw_link.STL" />
+        <mesh filename="../meshes/L_thumb_proximal_yaw_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -953,7 +967,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/L_thumb_proximal_pitch_link.STL" />
+        <mesh filename="../meshes/L_thumb_proximal_pitch_link.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -962,7 +976,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/L_thumb_proximal_pitch_link.STL" />
+        <mesh filename="../meshes/L_thumb_proximal_pitch_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -975,7 +989,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/L_thumb_distal_link.STL" />
+        <mesh filename="../meshes/L_thumb_distal_link.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -984,7 +998,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/L_thumb_distal_link.STL" />
+        <mesh filename="../meshes/L_thumb_distal_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -1008,7 +1022,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/L_index_proximal_link.STL" />
+        <mesh filename="../meshes/L_index_proximal_link.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -1017,7 +1031,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/L_index_proximal_link.STL" />
+        <mesh filename="../meshes/L_index_proximal_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -1030,7 +1044,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/L_index_intermediate_link.STL" />
+        <mesh filename="../meshes/L_index_intermediate_link.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -1039,7 +1053,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/L_index_intermediate_link.STL" />
+        <mesh filename="../meshes/L_index_intermediate_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -1063,7 +1077,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/L_middle_proximal_link.STL" />
+        <mesh filename="../meshes/L_middle_proximal_link.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -1072,7 +1086,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/L_middle_proximal_link.STL" />
+        <mesh filename="../meshes/L_middle_proximal_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -1085,7 +1099,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/L_middle_intermediate_link.STL" />
+        <mesh filename="../meshes/L_middle_intermediate_link.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -1094,7 +1108,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/L_middle_intermediate_link.STL" />
+        <mesh filename="../meshes/L_middle_intermediate_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -1118,7 +1132,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/L_ring_proximal_link.STL" />
+        <mesh filename="../meshes/L_ring_proximal_link.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -1127,7 +1141,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/L_ring_proximal_link.STL" />
+        <mesh filename="../meshes/L_ring_proximal_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -1140,7 +1154,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/L_ring_intermediate_link.STL" />
+        <mesh filename="../meshes/L_ring_intermediate_link.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -1149,7 +1163,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/L_ring_intermediate_link.STL" />
+        <mesh filename="../meshes/L_ring_intermediate_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -1173,7 +1187,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/L_pinky_proximal_link.STL" />
+        <mesh filename="../meshes/L_pinky_proximal_link.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -1182,7 +1196,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/L_pinky_proximal_link.STL" />
+        <mesh filename="../meshes/L_pinky_proximal_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -1195,7 +1209,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/L_pinky_intermediate_link.STL" />
+        <mesh filename="../meshes/L_pinky_intermediate_link.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -1204,7 +1218,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/L_pinky_intermediate_link.STL" />
+        <mesh filename="../meshes/L_pinky_intermediate_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -1340,7 +1354,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/R_hand_base_link.STL" />
+        <mesh filename="../meshes/R_hand_base_link.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -1349,7 +1363,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/R_hand_base_link.STL" />
+        <mesh filename="../meshes/R_hand_base_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -1362,7 +1376,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/R_thumb_proximal_yaw_link.STL" />
+        <mesh filename="../meshes/R_thumb_proximal_yaw_link.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -1371,7 +1385,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/R_thumb_proximal_yaw_link.STL" />
+        <mesh filename="../meshes/R_thumb_proximal_yaw_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -1384,7 +1398,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/R_thumb_proximal_pitch_link.STL" />
+        <mesh filename="../meshes/R_thumb_proximal_pitch_link.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -1393,7 +1407,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/R_thumb_proximal_pitch_link.STL" />
+        <mesh filename="../meshes/R_thumb_proximal_pitch_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -1406,7 +1420,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/R_thumb_distal_link.STL" />
+        <mesh filename="../meshes/R_thumb_distal_link.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -1415,7 +1429,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/R_thumb_distal_link.STL" />
+        <mesh filename="../meshes/R_thumb_distal_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -1439,7 +1453,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/R_index_proximal_link.STL" />
+        <mesh filename="../meshes/R_index_proximal_link.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -1448,7 +1462,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/R_index_proximal_link.STL" />
+        <mesh filename="../meshes/R_index_proximal_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -1461,7 +1475,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/R_index_intermediate_link.STL" />
+        <mesh filename="../meshes/R_index_intermediate_link.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -1470,7 +1484,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/R_index_intermediate_link.STL" />
+        <mesh filename="../meshes/R_index_intermediate_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -1494,7 +1508,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/R_middle_proximal_link.STL" />
+        <mesh filename="../meshes/R_middle_proximal_link.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -1503,7 +1517,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/R_middle_proximal_link.STL" />
+        <mesh filename="../meshes/R_middle_proximal_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -1516,7 +1530,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/R_middle_intermediate_link.STL" />
+        <mesh filename="../meshes/R_middle_intermediate_link.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -1525,7 +1539,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/R_middle_intermediate_link.STL" />
+        <mesh filename="../meshes/R_middle_intermediate_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -1549,7 +1563,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/R_ring_proximal_link.STL" />
+        <mesh filename="../meshes/R_ring_proximal_link.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -1558,7 +1572,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/R_ring_proximal_link.STL" />
+        <mesh filename="../meshes/R_ring_proximal_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -1571,7 +1585,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/R_ring_intermediate_link.STL" />
+        <mesh filename="../meshes/R_ring_intermediate_link.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -1580,7 +1594,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/R_ring_intermediate_link.STL" />
+        <mesh filename="../meshes/R_ring_intermediate_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -1604,7 +1618,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/R_pinky_proximal_link.STL" />
+        <mesh filename="../meshes/R_pinky_proximal_link.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -1613,7 +1627,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/R_pinky_proximal_link.STL" />
+        <mesh filename="../meshes/R_pinky_proximal_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -1626,7 +1640,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/R_pinky_intermediate_link.STL" />
+        <mesh filename="../meshes/R_pinky_intermediate_link.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -1635,7 +1649,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="../meshes/fourier_hand_6dof/R_pinky_intermediate_link.STL" />
+        <mesh filename="../meshes/R_pinky_intermediate_link.STL" />
       </geometry>
     </collision>
   </link>
